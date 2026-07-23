@@ -2,6 +2,7 @@ import { useState } from "react";
 import { MapPin, Phone, Mail, MessageCircle, Send } from "lucide-react";
 import { business, whatsappLink } from "../data/mockData";
 import Breadcrumb from "../components/ui/Breadcrumb";
+import Seo from "../components/seo/Seo";
 import { InstagramIcon, FacebookIcon, TikTokIcon } from "../components/ui/SocialIcons";
 
 export default function Contact() {
@@ -14,6 +15,11 @@ export default function Contact() {
 
   return (
     <div className="container-inna py-8 sm:py-12">
+      <Seo
+        title="Contacto"
+        description="Escribinos por WhatsApp, email o visitanos en nuestro local de Gral. Pacheco. Atención directa para profesionales del rubro estética."
+        path="/contacto"
+      />
       <Breadcrumb items={[{ label: "Contacto" }]} />
       <h1 className="!m-0 mt-3 !text-3xl font-semibold sm:!text-4xl">Hablemos</h1>
       <p className="mt-2 max-w-lg text-sm text-neutral-500 sm:text-base">

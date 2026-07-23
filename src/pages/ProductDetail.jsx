@@ -29,6 +29,8 @@ import {
 import Breadcrumb from "../components/ui/Breadcrumb";
 import ProductImage from "../components/ui/ProductImage";
 import ProductCard from "../components/ui/ProductCard";
+import Seo from "../components/seo/Seo";
+import { getProductSchema, getBreadcrumbSchema } from "../lib/schema";
 import { useCart } from "../context/CartContext";
 
 const formatPrice = (n) =>
@@ -66,6 +68,7 @@ export default function ProductDetail() {
   if (!producto) {
     return (
       <div className="container-inna py-24 text-center">
+        <Seo title="Producto no encontrado" noindex />
         <h1 className="!text-2xl font-semibold">Producto no encontrado</h1>
         <Link to="/" className="mt-4 inline-block text-sm font-semibold text-violet-700">Volver al inicio</Link>
       </div>
@@ -95,15 +98,22 @@ export default function ProductDetail() {
     }
   };
 
+  const breadcrumbItems = [
+    { to: `/catalogo/${rubro.id}`, label: rubro.nombre },
+    { to: `/catalogo/${rubro.id}`, label: categoria?.nombre || "" },
+    { label: producto.nombre },
+  ];
+
   return (
     <div className="container-inna py-8 sm:py-10">
-      <Breadcrumb
-        items={[
-          { to: `/catalogo/${rubro.id}`, label: rubro.nombre },
-          { to: `/catalogo/${rubro.id}`, label: categoria?.nombre || "" },
-          { label: producto.nombre },
-        ]}
+      <Seo
+        title={producto.nombre}
+        description={producto.descripcion}
+        path={`/producto/${producto.id}`}
+        type="product"
+        jsonLd={[getProductSchema(producto), getBreadcrumbSchema(breadcrumbItems)]}
       />
+      <Breadcrumb items={breadcrumbItems} />
 
       <div className="mt-6 grid gap-10 lg:grid-cols-2">
         {/* Gallery */}

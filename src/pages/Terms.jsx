@@ -1,4 +1,5 @@
 import Breadcrumb from "../components/ui/Breadcrumb";
+import Seo from "../components/seo/Seo";
 import { business } from "../data/mockData";
 
 const secciones = [
@@ -47,6 +48,7 @@ const secciones = [
 export default function Terms() {
   return (
     <div className="container-inna py-8 sm:py-12">
+      <Seo title="Términos y condiciones" path="/terminos-y-condiciones" />
       <Breadcrumb items={[{ label: "Términos y condiciones" }]} />
       <h1 className="!m-0 mt-3 !text-3xl font-semibold sm:!text-4xl">Términos y condiciones</h1>
       <p className="mt-2 text-sm text-neutral-500">Última actualización: julio de 2026</p>

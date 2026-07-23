@@ -1,4 +1,5 @@
 import Breadcrumb from "../components/ui/Breadcrumb";
+import Seo from "../components/seo/Seo";
 import { business } from "../data/mockData";
 
 const secciones = [
@@ -43,6 +44,7 @@ const secciones = [
 export default function Privacy() {
   return (
     <div className="container-inna py-8 sm:py-12">
+      <Seo title="Política de privacidad" path="/politica-de-privacidad" />
       <Breadcrumb items={[{ label: "Política de privacidad" }]} />
       <h1 className="!m-0 mt-3 !text-3xl font-semibold sm:!text-4xl">Política de privacidad</h1>
       <p className="mt-2 text-sm text-neutral-500">Última actualización: julio de 2026</p>

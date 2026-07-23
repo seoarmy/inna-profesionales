@@ -10,6 +10,8 @@ import {
 import Breadcrumb from "../components/ui/Breadcrumb";
 import ProductCard from "../components/ui/ProductCard";
 import CategoryFilters from "../components/ui/CategoryFilters";
+import Seo from "../components/seo/Seo";
+import { getBreadcrumbSchema } from "../lib/schema";
 
 const PAGE_SIZE = 8;
 
@@ -74,6 +76,7 @@ export default function Catalogo() {
   if (!rubro) {
     return (
       <div className="container-inna py-24 text-center">
+        <Seo title="Rubro no encontrado" noindex />
         <h1 className="!text-2xl font-semibold">Rubro no encontrado</h1>
       </div>
     );
@@ -95,6 +98,12 @@ export default function Catalogo() {
 
   return (
     <div className="container-inna py-8 sm:py-10">
+      <Seo
+        title={`${rubro.nombre} — Catálogo profesional`}
+        description={`${rubro.descripcion}. Comprá insumos de ${rubro.nombre.toLowerCase()} de primeras marcas en INNA Profesional.`}
+        path={`/catalogo/${rubro.id}`}
+        jsonLd={getBreadcrumbSchema([{ to: `/catalogo/${rubro.id}`, label: rubro.nombre }])}
+      />
       <Breadcrumb items={[{ label: rubro.nombre }]} />
       <h1 className="!m-0 mt-3 !text-2xl font-semibold sm:!text-3xl">{rubro.nombre}</h1>
       <p className="mt-1 text-sm text-neutral-500">{rubro.descripcion}</p>

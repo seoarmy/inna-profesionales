@@ -1,5 +1,6 @@
 import { Award, Users, Package, Truck } from "lucide-react";
 import Breadcrumb from "../components/ui/Breadcrumb";
+import Seo from "../components/seo/Seo";
 
 const valores = [
   { icon: Package, title: "Stock real", desc: "Trabajamos con disponibilidad actualizada para que compres con seguridad." },
@@ -11,6 +12,11 @@ const valores = [
 export default function About() {
   return (
     <div className="container-inna py-8 sm:py-12">
+      <Seo
+        title="Nosotros"
+        description="Más de una década distribuyendo insumos profesionales de peluquería, estética, manicuría y barbería desde Gral. Pacheco."
+        path="/nosotros"
+      />
       <Breadcrumb items={[{ label: "Nosotros" }]} />
 
       <div className="mt-6 grid items-center gap-10 lg:grid-cols-2">
